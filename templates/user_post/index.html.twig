@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserPostController!{% endblock %}
+
+{% block body %}
+
+<h1>Nowy Post</h1>
+{{ form_start(UserPost_form) }}
+    {{ form_row(UserPost_form.Content) }}
+
+    <button type="submit" class="btn">Dodaj Post</button>
+
+{{ form_end(UserPost_form) }}
+
+{% endblock %}
