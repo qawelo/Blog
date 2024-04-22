@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CommentController!{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('css/post.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/create_comment.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+
+    <div class="post">
+        <div class="post_header">
+            <div> {{ UserPost.Author }} </div>
+            <div> {{ UserPost.Topic }} </div>
+            <div> {{ UserPost.Date.format("Y-m-d") }} </div>
+        </div>
+
+        <div class="post_content">
+            <div> {{ UserPost.Content }} </div>
+        </div>
+    </div>
+
+    <div class="post">
+        <div class="post_header">
+
+        </div>
+
+        <div class="post_content">
+            {{ form_start(Comment_form) }}
+                {{ form_row(Comment_form.content) }}
+                <button type="submit">Opublikuj komentarz</button>
+            {{ form_end(Comment_form) }}
+        </div>
+    </div>
+
+{% endblock %}

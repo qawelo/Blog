@@ -1,15 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello UserPostController!{% endblock %}
+{% block title %}Post{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('css/post.css') }}" rel="stylesheet"/>
+{% endblock %}
 
 {% block body %}
 
-<h1>Nowy Post</h1>
-{{ form_start(UserPost_form) }}
-    {{ form_row(UserPost_form.Content) }}
 
-    <button type="submit" class="btn">Dodaj Post</button>
+    <div class="post">
+        <div class="post_header">
+            <div> {{ UserPost.Author }} </div>
+            <div> {{ UserPost.Topic }} </div>
+            <div> {{ UserPost.Date.format("Y-m-d") }} </div>
+        </div>
 
-{{ form_end(UserPost_form) }}
+        <div class="post_content">
+            <div> {{ UserPost.Content }} </div>
+        </div>
+
+        <a href={{ UserPost.Id }}/comment> <input type="button" value="Dodaj komentarz"> </a>
+    </div>
+
+    {% for comment in Comments %}
+        
+        <div class="post">
+            <div class="post_header">
+                <div> {{ comment.Author }} </div>
+                <div>  </div>
+                <div> {{ comment.Date.format("Y-m-d") }} </div>
+            </div>
+
+            <div class="post_content">
+                <div> {{ comment.Content }} </div>
+            </div>
+        </div>   
+
+    {% endfor %}
+
+
 
 {% endblock %}

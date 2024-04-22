@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Forum{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('css/home.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block body %}
+    {% for post in UserPosts %}
+        <a class="post-preview" href="post/{{ post.id }}">
+           <div> {{ post.Topic }} </div>
+           <div> {{ post.Author }} </div>
+        </a>
+    {% endfor %}
+
+{% endblock %}
